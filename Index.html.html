@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Rad Tech • Soluções em Radiologia</title>
+    <!-- Font Awesome 6 (gratuito) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Poppins (limpo, moderno) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- VARIÁVEIS E RESET ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-profundo: #0A2472;
+            --azul-medio: #1E3D8C;
+            --azul-claro: #4A90E2;
+            --azul-soft: #E6F0FA;
+            --cinza-escuro: #2D3A4A;
+            --cinza-suave: #F4F7FC;
+            --branco: #FFFFFF;
+            --sombra: 0 12px 30px rgba(0,20,50,0.08);
+            --border-radius: 16px;
+            --transicao: all 0.25s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--cinza-escuro);
+            background-color: var(--branco);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ---------- HEADER MODERNO ---------- */
+        header {
+            background-color: var(--branco);
+            box-shadow: 0 4px 20px rgba(10,36,114,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(145deg, var(--azul-profundo), var(--azul-medio));
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            box-shadow: 0 6px 12px rgba(30,61,140,0.2);
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--azul-profundo);
+            line-height: 1.2;
+        }
+        .logo-text span {
+            color: var(--azul-claro);
+            font-weight: 500;
+            font-size: 1rem;
+            display: block;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--cinza-escuro);
+            position: relative;
+            padding-bottom: 6px;
+            transition: var(--transicao);
+        }
+
+        nav a:hover {
+            color: var(--azul-medio);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--azul-claro);
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-contato-header {
+            background: var(--azul-profundo);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            box-shadow: 0 8px 14px rgba(10,36,114,0.2);
+        }
+        .btn-contato-header:hover {
+            background: var(--azul-medio);
+            transform: translateY(-2px);
+        }
+        .btn-contato-header::after {
+            display: none;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
+            padding: 3.5rem 0 4rem;
+            background: linear-gradient(105deg, var(--branco) 40%, var(--azul-soft) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1 1 45%;
+        }
+
+        .hero-badge {
+            background: rgba(74,144,226,0.12);
+            color: var(--azul-profundo);
+            font-weight: 600;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(74,144,226,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            color: var(--azul-profundo);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 i {
+            color: var(--azul-claro);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #3E4F5E;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transicao);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--azul-profundo);
+            color: white;
+            box-shadow: 0 10px 18px rgba(10,36,114,0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--azul-medio);
+            transform: scale(1.04);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--azul-profundo);
+            color: var(--azul-profundo);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--azul-profundo);
+            color: white;
+        }
+
+        .hero-image {
+            flex: 1 1 45%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-image i {
+            font-size: 14rem;
+            color: var(--azul-claro);
+            opacity: 0.25;
+            position: absolute;
+            right: 20px;
+            top: -20px;
+        }
+
+        .hero-image .img-placeholder {
+            background: radial-gradient(circle at 70% 30%, var(--azul-claro) 0%, var(--azul-medio) 90%);
+            width: 100%;
+            max-width: 450px;
+            height: 320px;
+            margin: 0 auto;
+            border-radius: 40px 40px 40px 0;
+            box-shadow: var(--sombra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8rem;
+            opacity: 0.9;
+        }
+
+        /* ---------- SEÇÕES GLOBAIS ---------- */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--azul-profundo);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #566b7c;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: var(--azul-claro);
+            margin: 0.8rem auto 1.2rem;
+            border-radius: 4px;
+        }
+
+        /* ---------- SERVIÇOS / CARDS ---------- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem 1.6rem;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+            border-bottom: 5px solid transparent;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-bottom: 5px solid var(--azul-claro);
+            box-shadow: 0 25px 40px rgba(10,36,114,0.1);
+        }
+
+        .service-icon {
+            background: var(--azul-soft);
+            width: 80px;
+            height: 80px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem;
+            font-size: 2.8rem;
+            color: var(--azul-profundo);
+            transition: 0.2s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--azul-profundo);
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--azul-medio);
+        }
+
+        .service-card p {
+            color: #4a5b69;
+        }
+
+        /* ---------- SOBRE ---------- */
+        .sobre {
+            background-color: var(--cinza-suave);
+        }
+
+        .sobre-grid {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sobre-text {
+            flex: 1 1 55%;
+        }
+
+        .sobre-text h3 {
+            font-size: 2rem;
+            color: var(--azul-profundo);
+            margin-bottom: 1rem;
+        }
+
+        .sobre-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #2e4457;
+        }
+
+        .sobre-highlight {
+            display: flex;
+            gap: 1.8rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--azul-medio);
+            background: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+        }
+
+        .sobre-image {
+            flex: 1 1 35%;
+            background: linear-gradient(145deg, #D4E6FA, #B0D4F0);
+            border-radius: 30px 30px 30px 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 280px;
+            color: var(--azul-profundo);
+            font-size: 9rem;
+            box-shadow: var(--sombra);
+        }
+
+        /* ---------- DIFERENCIAIS ---------- */
+        .diferenciais {
+            background: white;
+        }
+        .diffs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .diff-item {
+            text-align: center;
+            padding: 1.8rem 1rem;
+        }
+        .diff-item i {
+            font-size: 2.8rem;
+            color: var(--azul-claro);
+            background: var(--azul-soft);
+            padding: 1.2rem;
+            border-radius: 24px;
+        }
+        .diff-item h4 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.5rem;
+            color: var(--azul-profundo);
+        }
+
+        /* ---------- CLIENTES / DEPOIMENTOS ---------- */
+        .depoimentos {
+            background: linear-gradient(145deg, var(--azul-soft), #F4F9FF);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 15px 30px rgba(0,40,80,0.06);
+        }
+        .testimonial i.fa-quote-right {
+            color: var(--azul-claro);
+            opacity: 0.3;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .testimonial p {
+            font-size: 1.05rem;
+            margin: 1rem 0 1.5rem;
+            font-style: italic;
+        }
+        .cliente-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cliente-avatar {
+            background: var(--azul-profundo);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ---------- CONTATO ---------- */
+        .contato {
+            background: white;
+        }
+        .contato-container {
+            display: flex;
+            gap: 3rem;
+            background: white;
+            border-radius: 40px;
+            box-shadow: var(--sombra);
+            padding: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .contato-info {
+            flex: 1 1 40%;
+        }
+        .contato-info h3 {
+            font-size: 2rem;
+            color: var(--azul-profundo);
+            margin-bottom: 1rem;
+        }
+        .contato-details {
+            margin: 2rem 0;
+        }
+        .contato-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .contato-item i {
+            width: 48px;
+            height: 48px;
+            background: var(--azul-soft);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-profundo);
+            font-size: 1.3rem;
+        }
+        .contato-form {
+            flex: 1 1 50%;
+            background: var(--cinza-suave);
+            padding: 2.5rem;
+            border-radius: 32px;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid transparent;
+            background: white;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: 0.2s;
+            border: 2px solid #E0E9F0;
+        }
+        textarea {
+            border-radius: 28px;
+            resize: vertical;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--azul-claro);
+            box-shadow: 0 0 0 4px rgba(74,144,226,0.1);
+        }
+        .btn-submit {
+            background: var(--azul-profundo);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transicao);
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        .btn-submit:hover {
+            background: var(--azul-medio);
+            transform: scale(1.02);
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: var(--azul-profundo);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .footer-logo span {
+            color: var(--azul-claro);
+            font-size: 1rem;
+            display: block;
+            font-weight: 400;
+        }
+        .footer-social a {
+            display: inline-block;
+            margin-right: 1.2rem;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            transition: 0.2s;
+        }
+        .footer-social a:hover {
+            color: white;
+            transform: translateY(-4px);
+        }
+        .footer-links h4, .footer-contato h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .footer-links ul, .footer-contato ul {
+            list-style: none;
+        }
+        .footer-links li, .footer-contato li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a:hover {
+            color: var(--azul-claro);
+            padding-left: 5px;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .header-flex { flex-direction: column; gap: 1rem; }
+            nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+            .hero .container { flex-direction: column; }
+            .hero-content { text-align: center; }
+            .hero p { max-width: 100%; }
+            .btn-group { justify-content: center; }
+            .sobre-grid { flex-direction: column; }
+            .contato-container { padding: 1.8rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-x-ray"></i>
+                </div>
+                <div class="logo-text">
+                    Rad Tech <span>Soluções em Radiologia Ltda.</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <a href="#contato" class="btn-contato-header"><i class="fas fa-headset"></i> Fale conosco</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO / HOME -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fas fa-certificate"></i> +12 anos de excelência</span>
+                    <h1>Tecnologia e precisão <br>em <i>diagnóstico por imagem</i></h1>
+                    <p>Soluções completas em equipamentos, manutenção, assessoria e telemedicina para clínicas e hospitais de todo o Brasil.</p>
+                    <div class="btn-group">
+                        <a href="#contato" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Solicitar orçamento</a>
+                        <a href="#servicos" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Nossos serviços</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="img-placeholder">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <i class="fas fa-circle-radiation"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVIÇOS -->
+        <section id="servicos" class="container">
+            <div class="section-title">
+                <h2>Especialidades Rad Tech</h2>
+                <div class="divider"></div>
+                <p>Da instalação à gestão completa do parque tecnológico em radiologia.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Manutenção</h3>
+                    <p>Suporte técnico especializado em equipamentos de raio-X, mamógrafos, tomógrafos e ressonância.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Instalação & Calibração</h3>
+                    <p>Instalação, comissionamento e calibração com laudos técnicos e rastreabilidade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Proteção Radiológica</h3>
+                    <p>Adequação às normas CNEN, ANVISA; blindagens, dosimetria e treinamento de equipes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Telemedicina & PACS</h3>
+                    <p>Implantação de sistemas RIS/PACS, laudos a distância e armazenamento seguro em nuvem.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE A RAD TECH -->
+        <section id="sobre" class="sobre">
+            <div class="container sobre-grid">
+                <div class="sobre-text">
+                    <h3>Quem somos</h3>
+                    <p>A <strong>Rad Tech – Soluções em Radiologia</strong> nasceu da experiência de físicos médicos e engenheiros clínicos. Somos especialistas no ecossistema radiológico: entendemos as dores do gestor, a urgência do técnico e a necessidade do paciente.</p>
+                    <p>Atuamos em todo território nacional com agilidade e ética. Nossa equipe é certificada pelas principais bandas de equipamentos médicos.</p>
+                    <div class="sobre-highlight">
+                        <span class="highlight-item"><i class="fas fa-check-circle" style="color: var(--azul-claro);"></i> Abrangência nacional</span>
+                        <span class="highlight-item"><i class="fas fa-check-circle" style="color: var(--azul-claro);"></i> ISO 9001:2015</span>
+                        <span class="highlight-item"><i class="fas fa-check-circle" style="color: var(--azul-claro);"></i> Atendimento 24/7</span>
+                    </div>
+                </div>
+                <div class="sobre-image">
+                    <i class="fas fa-microscope"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIFERENCIAIS -->
+        <section class="diferenciais container">
+            <div class="section-title">
+                <h2>Por que Rad Tech?</h2>
+                <div class="divider"></div>
+                <p>Inovação, compliance e cuidado em cada detalhe.</p>
+            </div>
+            <div class="diffs-grid">
+                <div class="diff-item">
+                    <i class="fas fa-flask"></i>
+                    <h4>Físicos especialistas</h4>
+                    <p>Corpo técnico com mestrado e doutorado em física médica.</p>
+                </div>
+                <div class="diff-item">
+                    <i class="fas fa-file-signature"></i>
+                    <h4>Gestão documental</h4>
+                    <p>Organizamos toda a documentação para vigilância sanitária.</p>
+                </div>
+                <div class="diff-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Auditoria preditiva</h4>
+                    <p>Análise de performance dos equipamentos para evitar falhas.</p>
+                </div>
+                <div class="diff-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>Suporte humanizado</h4>
+                    <p>Atendimento próximo e sem burocracia, do técnico ao diretor.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEPOIMENTOS (CLIENTES) -->
+        <section class="depoimentos">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Clientes que confiam</h2>
+                    <div class="divider"></div>
+                    <p>O que dizem os gestores de diagnóstico por imagem.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <i class="fas fa-quote-right"></i>
+                        <p>"A Rad Tech reduziu em 40% o downtime dos nossos equipamentos. Profissionais extremamente capacitados e ágeis."</p>
+                        <div class="cliente-info">
+                            <div class="cliente-avatar">DR</div>
+                            <div><strong>Dra. Renata Lemos</strong><br> <span style="color:#4A90E2;">Directora Clínica - ImageDiag</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <i class="fas fa-quote-right"></i>
+                        <p>"Contrato de manutenção preventiva com ótimo custo-benefício. Resolvem problemas complexos em poucas horas."</p>
+                        <div class="cliente-info">
+                            <div class="cliente-avatar">CM</div>
+                            <div><strong>Carlos Menezes</strong><br> <span style="color:#4A90E2;">Coordenador de Engenharia - Hosp. Sul</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <i class="fas fa-quote-right"></i>
+                        <p>"Implantação do PACS em 3 unidades. Equipe atenciosa, cumpriram cronograma e treinaram nossos técnicos."</p>
+                        <div class="cliente-info">
+                            <div class="cliente-avatar">AF</div>
+                            <div><strong>Ana Fonseca</strong><br> <span style="color:#4A90E2;">Radiologia - Centro Médico Vita</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section id="contato" class="contato">
+            <div class="container contato-container">
+                <div class="contato-info">
+                    <h3>Pronto para modernizar sua radiologia?</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Solicite um diagnóstico gratuito da sua estrutura.</p>
+                    <div class="contato-details">
+                        <div class="contato-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div><strong>Central de atendimento</strong><br>0800 777 1234 | (11) 3042-7890</div>
+                        </div>
+                        <div class="contato-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><strong>E-mail comercial</strong><br>contato@radtech.com.br</div>
+                        </div>
+                        <div class="contato-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Sede São Paulo</strong><br>Av. Paulista, 1500 - Conj 810 - Bela Vista</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contato-form">
+                    <h3 style="color: var(--azul-profundo); margin-bottom: 1.5rem;">Envie uma mensagem</h3>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="E-mail corporativo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Telefone / WhatsApp">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="3" placeholder="Conte-nos seu desafio ou interesse..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Solicitar contato</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-x-ray" style="margin-right: 8px;"></i> Rad Tech
+                        <span>Soluções em Radiologia Ltda.</span>
+                    </div>
+                    <p style="margin: 1.2rem 0; color: rgba(255,255,255,0.8);">Tecnologia, segurança e suporte para o ecossistema radiológico brasileiro.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#sobre">Sobre nós</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Manutenção corretiva</a></li>
+                        <li><a href="#">Proteção radiológica</a></li>
+                        <li><a href="#">Telemedicina</a></li>
+                        <li><a href="#">Assessoria ANVISA</a></li>
+                        <li><a href="#">Cursos e treinamentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contato">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> Seg – Sex: 8h às 18h</li>
+                        <li><i class="fas fa-phone"></i> 0800 777 1234</li>
+                        <li><i class="fas fa-whatsapp"></i> (11) 98765-4321</li>
+                        <li style="margin-top: 10px;"><i class="fas fa-file-alt"></i> CNPJ: 12.345.678/0001-90</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Rad Tech - Soluções em Radiologia Ltda. Todos os direitos reservados. 
+                | Desenvolvido com <i class="fas fa-heart" style="color: #4A90E2;"></i> para a radiologia.
+            </div>
+        </div>
+    </footer>
+
+    <!-- pequeno script para suavizar scroll (âncoras) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
